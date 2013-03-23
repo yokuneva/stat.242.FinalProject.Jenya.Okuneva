@@ -7,6 +7,8 @@ cov.vals = read.table("cov.vals.csv", header = TRUE)
 library(nlme)
 library(contrast)
 library(parallel)
+
+
 ##################### Extractor Functions from Jose Pinheiro ##############
 #
 ### These two functions (varRan and varWithin) extract the random effects for a
@@ -89,6 +91,7 @@ simulateData(N = 30,
 
 
 
+###############################generate fake data
 
 simulateData = function(N,  beta,sigma1, sigma2, tau){
   
@@ -282,14 +285,9 @@ system.time(
 df = data.frame(mat);names(df)=c("coef","pvalue")
 
 
-sum(length(df$pvalue[df$pvalue <= 0.05]))/200
+sum(length(df$pvalue[df$pvalue <= 0.05]))/100
 
 k=df[which(df$pvalue %in% NA),]
-
-
-
-
-
 
 
 
